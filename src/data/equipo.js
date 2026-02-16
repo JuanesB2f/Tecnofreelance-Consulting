@@ -43,7 +43,7 @@ export const equipo = [
     how: 'Análisis de casos de uso, diseño de flujos conversacionales, entrenamiento de modelos de IA, integración con sistemas empresariales y optimización continua basada en métricas.',
     services: ['Agentes de Inteligencia Artificial (Copilot)', 'Chatbots Inteligentes', 'Automatización Cognitiva'],
     email: 'juan.fonseca@tecnofreelance.com',
-    image: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=400&fit=crop',
+    image: 'img/juan.jpeg',
     portfolio: [
       'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=600&fit=crop',
       'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop',
