@@ -27,10 +27,10 @@ const Hero = () => {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-5xl sm:text-6xl lg:text-7xl font-bold text-white mb-6"
+            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-4 sm:mb-6 leading-tight"
           >
-            Tecnofreelance
-            <span className="block text-primary-200">Consulting</span>
+            <span className="block">Tecnofreelance</span>
+            <span className="block text-primary-200 mt-1 sm:mt-2">Consulting</span>
           </motion.h1>
 
           {/* Main Text */}
@@ -38,7 +38,7 @@ const Hero = () => {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className="text-xl sm:text-2xl lg:text-3xl text-white/90 font-light mb-6 leading-relaxed"
+            className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-white/90 font-light mb-4 sm:mb-6 leading-relaxed px-2 sm:px-0"
           >
             Creamos soluciones digitales escalables mediante{' '}
             <span className="font-semibold text-white">Power Platform</span>,{' '}
@@ -53,7 +53,7 @@ const Hero = () => {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.6 }}
-            className="text-lg sm:text-xl text-white/80 mb-10 max-w-3xl mx-auto leading-relaxed"
+            className="text-base sm:text-lg md:text-xl text-white/80 mb-8 sm:mb-10 max-w-3xl mx-auto leading-relaxed px-2 sm:px-0"
           >
             Somos un equipo de consultores tecnológicos especializados en soluciones Microsoft, 
             analítica de datos, automatización de procesos y desarrollo de software empresarial.
