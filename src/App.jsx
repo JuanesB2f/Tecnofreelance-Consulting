@@ -11,7 +11,7 @@ function App() {
     <Router>
       <div className="min-h-screen bg-white">
         <Navbar />
-        <main>
+        <main className="pb-20 md:pb-0">
           <Hero />
           <Servicios />
           <Equipo />

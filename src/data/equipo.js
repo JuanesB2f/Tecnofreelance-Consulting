@@ -9,7 +9,7 @@ export const equipo = [
     how: 'Trabajo colaborativo con stakeholders, análisis de necesidades organizacionales, diseño de frameworks de gobernanza personalizados y acompañamiento continuo en la adopción.',
     services: ['Centro de Excelencia (CoE)', 'Power Platform', 'Gobernanza Tecnológica'],
     email: 'ivan.bohorquez@tecnofreelance.com',
-    image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop',
+    image: '',
     portfolio: [
       'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=600&fit=crop',
       'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop',
@@ -26,7 +26,7 @@ export const equipo = [
     how: 'Metodología ágil de desarrollo, trabajo cercano con usuarios finales, diseño centrado en la experiencia y optimización continua de modelos de datos para máximo rendimiento.',
     services: ['Power BI & Analítica de Datos', 'Business Intelligence', 'Data Modeling'],
     email: 'sandra.bolivar@tecnofreelance.com',
-    image: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&h=400&fit=crop',
+    image: '',
     portfolio: [
       'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=600&fit=crop',
       'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop',
@@ -43,7 +43,7 @@ export const equipo = [
     how: 'Análisis de casos de uso, diseño de flujos conversacionales, entrenamiento de modelos de IA, integración con sistemas empresariales y optimización continua basada en métricas.',
     services: ['Agentes de Inteligencia Artificial (Copilot)', 'Chatbots Inteligentes', 'Automatización Cognitiva'],
     email: 'juanesavilafonseca@gmail.com',
-    image: 'img/juan/juan.jpg',
+    image: '',
     portfolio: [
       'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=600&fit=crop',
       'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop',
