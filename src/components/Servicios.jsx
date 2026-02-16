@@ -24,7 +24,7 @@ const Servicios = () => {
   }
 
   return (
-    <section id="servicios" className="py-20 sm:py-24 lg:py-32 bg-gray-50">
+    <section id="servicios" className="py-20 sm:py-24 lg:py-32 bg-gray-50 dark:bg-gray-900">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <motion.div
@@ -34,10 +34,10 @@ const Servicios = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 mb-4">
+          <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 dark:text-white mb-4">
             Nuestros Servicios
           </h2>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+          <p className="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
             Soluciones tecnológicas integrales para impulsar la transformación digital de tu empresa
           </p>
         </motion.div>
@@ -55,17 +55,17 @@ const Servicios = () => {
               key={servicio.id}
               variants={cardVariants}
               whileHover={{ y: -8, transition: { duration: 0.3 } }}
-              className="bg-white rounded-xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden group cursor-pointer"
+              className="bg-white dark:bg-gray-800 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden group cursor-pointer"
             >
               <div className={`h-2 bg-gradient-to-r ${servicio.color}`}></div>
               <div className="p-6 lg:p-8">
                 <div className="text-5xl mb-4 transform group-hover:scale-110 transition-transform duration-300">
                   {servicio.icon}
                 </div>
-                <h3 className="text-2xl font-bold text-gray-900 mb-3">
+                <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-3">
                   {servicio.title}
                 </h3>
-                <p className="text-gray-600 leading-relaxed">
+                <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
                   {servicio.description}
                 </p>
               </div>

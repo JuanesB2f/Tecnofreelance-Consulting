@@ -29,7 +29,7 @@ const Equipo = () => {
 
   return (
     <>
-      <section id="equipo" className="py-20 sm:py-24 lg:py-32 bg-white">
+      <section id="equipo" className="py-20 sm:py-24 lg:py-32 bg-white dark:bg-gray-950">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           {/* Header */}
           <motion.div
@@ -39,10 +39,10 @@ const Equipo = () => {
             transition={{ duration: 0.6 }}
             className="text-center mb-16"
           >
-            <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 mb-4">
+            <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 dark:text-white mb-4">
               Nuestro Equipo
             </h2>
-            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+            <p className="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
               Expertos apasionados por la tecnología y la innovación
             </p>
           </motion.div>
@@ -60,7 +60,7 @@ const Equipo = () => {
                 key={member.id}
                 variants={cardVariants}
                 whileHover={{ y: -8, scale: 1.02 }}
-                className="bg-white rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden cursor-pointer group"
+                className="bg-white dark:bg-gray-900 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden cursor-pointer group"
                 onClick={() => setSelectedMember(member)}
               >
                 <div className="relative overflow-hidden">
@@ -72,13 +72,13 @@ const Equipo = () => {
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                 </div>
                 <div className="p-6">
-                  <h3 className="text-2xl font-bold text-gray-900 mb-2">
+                  <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">
                     {member.name}
                   </h3>
-                  <p className="text-primary-600 font-semibold mb-4">
+                  <p className="text-primary-400 dark:text-primary-300 font-semibold mb-4">
                     {member.role}
                   </p>
-                  <p className="text-gray-600 text-sm leading-relaxed line-clamp-3">
+                  <p className="text-gray-600 dark:text-gray-300 text-sm leading-relaxed line-clamp-3">
                     {member.description}
                   </p>
                   <button className="mt-4 text-primary-600 font-medium hover:text-primary-700 transition-colors">
