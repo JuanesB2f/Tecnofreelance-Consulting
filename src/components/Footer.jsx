@@ -1,91 +1,78 @@
 import { motion } from 'framer-motion'
+import { ArrowUp, Mail, LayoutGrid, Users, MessageCircle, ExternalLink } from 'lucide-react'
+import { PORTFOLIO_URL } from '../data/especialidades'
 
 const Footer = () => {
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' })
-  }
+  const scrollTo = (id) => document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+  const scrollToTop = () => window.scrollTo({ top: 0, behavior: 'smooth' })
 
   return (
-    <footer className="bg-gray-900 text-white dark:bg-black py-12 transition-colors duration-300">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
-          {/* Company Info */}
-          <div>
-            <h3 className="text-2xl font-bold mb-4">Tecnofreelance Consulting</h3>
-            <p className="text-gray-400 dark:text-gray-300 leading-relaxed">
-              Soluciones digitales escalables para empresas que buscan transformar su futuro tecnológico.
+    <footer className="bg-gray-900 dark:bg-gray-950 text-white py-12 lg:py-16 border-t border-gray-800">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-10 mb-10 lg:mb-12">
+          <div className="lg:col-span-2">
+            <h3 className="text-xl font-bold tracking-tight mb-3">Tecnofreelance Consulting</h3>
+            <p className="text-gray-400 max-w-md leading-relaxed text-sm mb-3">
+              Soluciones digitales escalables mediante Power Platform, Power BI, desarrollo pro code y agentes de inteligencia artificial con Copilot.
             </p>
+            <p className="text-gray-500 text-xs mb-4">
+              Power Platform · CoE · Data · Pro Code · AI Agents
+            </p>
+            <a
+              href={PORTFOLIO_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 text-primary-400 hover:text-white transition-colors text-sm font-medium"
+            >
+              <ExternalLink className="w-4 h-4" /> Ver portafolio
+            </a>
           </div>
 
-          {/* Quick Links */}
           <div>
-            <h4 className="text-lg font-semibold mb-4">Enlaces Rápidos</h4>
-            <ul className="space-y-2">
+            <h4 className="text-sm font-semibold text-gray-300 uppercase tracking-wider mb-3">Navegación</h4>
+            <ul className="space-y-2.5">
               <li>
-                <button
-                  onClick={() => {
-                    const element = document.getElementById('servicios')
-                    if (element) element.scrollIntoView({ behavior: 'smooth' })
-                  }}
-                  className="text-gray-400 dark:text-gray-300 hover:text-white transition-colors"
-                >
-                  Servicios
+                <button onClick={() => scrollTo('servicios')} className="flex items-center gap-2 text-gray-400 hover:text-white transition-colors text-sm">
+                  <LayoutGrid className="w-4 h-4" /> Soluciones digitales
                 </button>
               </li>
               <li>
-                <button
-                  onClick={() => {
-                    const element = document.getElementById('equipo')
-                    if (element) element.scrollIntoView({ behavior: 'smooth' })
-                  }}
-                  className="text-gray-400 dark:text-gray-300 hover:text-white transition-colors"
-                >
-                  Equipo
+                <button onClick={() => scrollTo('equipo')} className="flex items-center gap-2 text-gray-400 hover:text-white transition-colors text-sm">
+                  <Users className="w-4 h-4" /> Sobre nosotros
                 </button>
               </li>
               <li>
-                <button
-                  onClick={() => {
-                    const element = document.getElementById('contacto')
-                    if (element) element.scrollIntoView({ behavior: 'smooth' })
-                  }}
-                  className="text-gray-400 dark:text-gray-300 hover:text-white transition-colors"
-                >
-                  Contacto
+                <button onClick={() => scrollTo('contacto')} className="flex items-center gap-2 text-gray-400 hover:text-white transition-colors text-sm">
+                  <MessageCircle className="w-4 h-4" /> Contáctanos
                 </button>
               </li>
             </ul>
           </div>
 
-          {/* Contact */}
           <div>
-            <h4 className="text-lg font-semibold mb-4">Contacto</h4>
-            <ul className="space-y-2 text-gray-400 dark:text-gray-300">
+            <h4 className="text-sm font-semibold text-gray-300 uppercase tracking-wider mb-3">Contacto</h4>
+            <ul className="space-y-2.5 text-sm">
               <li>
-                <a
-                  href="mailto:contacto@tecnofreelance.com"
-                  className="hover:text-white transition-colors"
-                >
-                  contacto@tecnofreelance.com
+                <a href="mailto:contacto@tecnofreelance.com" className="flex items-center gap-2 text-gray-400 hover:text-white transition-colors">
+                  <Mail className="w-4 h-4" /> contacto@tecnofreelance.com
                 </a>
               </li>
-              <li>Servicios Remotos · Global</li>
+              <li className="text-gray-500">Servicios remotos · Global</li>
             </ul>
           </div>
         </div>
 
-        {/* Bottom Bar */}
-        <div className="border-t border-gray-800 dark:border-gray-700 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-gray-400 dark:text-gray-400 text-sm">
+        <div className="border-t border-gray-800 pt-6 lg:pt-8 flex flex-col sm:flex-row justify-between items-center gap-4">
+          <p className="text-gray-500 text-sm">
             © {new Date().getFullYear()} Tecnofreelance Consulting. Todos los derechos reservados.
           </p>
           <motion.button
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.9 }}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
             onClick={scrollToTop}
-            className="text-gray-400 dark:text-gray-300 hover:text-white transition-colors text-sm"
+            className="inline-flex items-center gap-2 text-gray-400 hover:text-white text-sm font-medium transition-colors"
           >
-            Volver arriba ↑
+            <ArrowUp className="w-4 h-4" /> Volver arriba
           </motion.button>
         </div>
       </div>
@@ -94,4 +81,3 @@ const Footer = () => {
 }
 
 export default Footer
-

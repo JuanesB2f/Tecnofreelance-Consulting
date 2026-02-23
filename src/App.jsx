@@ -44,7 +44,7 @@ function App() {
 
   return (
     <Router>
-      <div className="min-h-screen bg-white text-gray-900 dark:bg-gray-950 dark:text-gray-50 transition-colors duration-300">
+      <div className="min-h-screen bg-white text-gray-900 dark:bg-gray-950 dark:text-gray-50 transition-colors duration-300 font-sans">
         <Navbar theme={theme} onToggleTheme={toggleTheme} />
         <main className="pb-20 md:pb-0">
           <Hero />

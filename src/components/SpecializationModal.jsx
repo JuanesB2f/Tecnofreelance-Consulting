@@ -1,12 +1,13 @@
 import { motion, AnimatePresence } from 'framer-motion'
-import { X, Mail } from 'lucide-react'
+import { X, Mail, ExternalLink } from 'lucide-react'
+import { PORTFOLIO_URL } from '../data/especialidades'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { Navigation, Pagination, Autoplay } from 'swiper/modules'
 import 'swiper/css'
 import 'swiper/css/navigation'
 import 'swiper/css/pagination'
 
-const MemberModal = ({ member, onClose }) => {
+const SpecializationModal = ({ specialization, onClose }) => {
   const scrollToContact = () => {
     onClose()
     setTimeout(() => {
@@ -24,93 +25,94 @@ const MemberModal = ({ member, onClose }) => {
         onClick={onClose}
       >
         <motion.div
-          initial={{ scale: 0.95, opacity: 0 }}
+          initial={{ scale: 0.96, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
-          exit={{ scale: 0.95, opacity: 0 }}
+          exit={{ scale: 0.96, opacity: 0 }}
           onClick={(e) => e.stopPropagation()}
           className="bg-white dark:bg-gray-900 rounded-2xl shadow-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto border border-gray-200 dark:border-gray-800"
         >
           <button
             onClick={onClose}
-            className="absolute top-4 right-4 z-10 p-2.5 rounded-xl bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
+            className="absolute top-4 right-4 z-10 p-2.5 rounded-xl bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
             aria-label="Cerrar"
           >
             <X className="w-5 h-5" />
           </button>
 
           <div className="p-6 lg:p-8">
-            {/* Header: área (sin nombre de persona) */}
+            {/* Encabezado: especialidad (sin nombre de persona) */}
             <div className="mb-8">
-              <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white mb-2">
-                {member.role}
-              </h2>
-              <p className="text-lg text-primary-600 dark:text-primary-400 font-semibold mb-4">
-                {member.title}
+              <p className="text-primary-600 dark:text-primary-400 text-sm font-semibold tracking-widest uppercase mb-2">
+                Nuestros especialistas
               </p>
-              <button
+              <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white mb-2">
+                {specialization.role}
+              </h2>
+              <p className="text-lg text-gray-600 dark:text-gray-400">
+                {specialization.title}
+              </p>
+              <motion.button
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
                 onClick={scrollToContact}
-                className="inline-flex items-center gap-2 bg-primary-600 text-white px-6 py-3 rounded-xl font-medium hover:bg-primary-700 transition-colors"
+                className="mt-4 inline-flex items-center gap-2 bg-primary-600 text-white px-6 py-3 rounded-xl font-semibold hover:bg-primary-700 transition-colors"
               >
                 <Mail className="w-5 h-5" />
                 Contáctanos
-              </button>
+              </motion.button>
             </div>
 
-            {/* Acerca de */}
             <div className="mb-8">
-              <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-3">Acerca de</h3>
+              <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-3">Acerca de esta especialidad</h3>
               <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
-                {member.description}
+                {specialization.description}
               </p>
             </div>
 
-            {/* Qué hace / Cómo lo hace */}
             <div className="grid md:grid-cols-2 gap-6 mb-8">
               <div className="bg-gray-50 dark:bg-gray-800/50 p-6 rounded-xl">
-                <h3 className="text-base font-bold text-gray-900 dark:text-white mb-3">Qué hace</h3>
+                <h3 className="text-base font-bold text-gray-900 dark:text-white mb-3">Qué hacemos</h3>
                 <p className="text-gray-600 dark:text-gray-400 leading-relaxed text-sm">
-                  {member.what}
+                  {specialization.what}
                 </p>
               </div>
               <div className="bg-gray-50 dark:bg-gray-800/50 p-6 rounded-xl">
-                <h3 className="text-base font-bold text-gray-900 dark:text-white mb-3">Cómo lo hace</h3>
+                <h3 className="text-base font-bold text-gray-900 dark:text-white mb-3">Cómo lo hacemos</h3>
                 <p className="text-gray-600 dark:text-gray-400 leading-relaxed text-sm">
-                  {member.how}
+                  {specialization.how}
                 </p>
               </div>
             </div>
 
-            {/* Servicios Asociados */}
             <div className="mb-8">
-              <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-4">Servicios Asociados</h3>
+              <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-4">Servicios asociados</h3>
               <div className="flex flex-wrap gap-3">
-                {member.services.map((service, index) => (
+                {specialization.services.map((s, i) => (
                   <span
-                    key={index}
+                    key={i}
                     className="bg-primary-50 dark:bg-primary-900/30 text-primary-700 dark:text-primary-300 px-4 py-2 rounded-lg font-medium text-sm"
                   >
-                    {service}
+                    {s}
                   </span>
                 ))}
               </div>
             </div>
 
-            {/* Carrusel de imágenes */}
             <div>
-              <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-4">Portafolio visual</h3>
+              <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-4">Portafolio</h3>
               <Swiper
                 modules={[Navigation, Pagination, Autoplay]}
                 spaceBetween={16}
                 slidesPerView={1}
                 navigation
                 pagination={{ clickable: true }}
-                autoplay={{ delay: 3000, disableOnInteraction: false }}
+                autoplay={{ delay: 3500, disableOnInteraction: false }}
                 breakpoints={{
                   640: { slidesPerView: 2 },
                 }}
                 className="rounded-xl overflow-hidden"
               >
-                {member.portfolio.map((image, index) => (
+                {specialization.portfolio.map((image, index) => (
                   <SwiperSlide key={index}>
                     <div className="relative h-56 sm:h-64 lg:h-72 rounded-xl overflow-hidden bg-gray-200 dark:bg-gray-800">
                       <img
@@ -124,17 +126,27 @@ const MemberModal = ({ member, onClose }) => {
               </Swiper>
             </div>
 
-            <div className="mt-8 pt-6 border-t border-gray-200 dark:border-gray-700">
-              <p className="text-gray-600 dark:text-gray-400 text-sm mb-2">
-                ¿Interesado en esta área?
-              </p>
+            <div className="mt-8 pt-6 border-t border-gray-200 dark:border-gray-700 space-y-4 text-center">
               <a
-                href="mailto:contacto@tecnofreelance.com"
-                className="inline-flex items-center gap-2 text-primary-600 dark:text-primary-400 hover:underline text-sm font-medium"
+                href={PORTFOLIO_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 text-primary-600 dark:text-primary-400 font-semibold hover:underline text-sm"
               >
-                <Mail className="w-5 h-5" />
-                contacto@tecnofreelance.com
+                <ExternalLink className="w-4 h-4" />
+                Ver portafolio completo (portafoleo.netlify.app)
               </a>
+              <p className="text-gray-600 dark:text-gray-400 text-sm">
+                ¿Interesado en trabajar con nuestros especialistas en {specialization.role}?
+              </p>
+              <motion.button
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                onClick={scrollToContact}
+                className="text-primary-600 dark:text-primary-400 font-semibold hover:underline"
+              >
+                Ir al formulario de contacto →
+              </motion.button>
             </div>
           </div>
         </motion.div>
@@ -143,4 +155,4 @@ const MemberModal = ({ member, onClose }) => {
   )
 }
 
-export default MemberModal
+export default SpecializationModal
