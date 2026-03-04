@@ -52,16 +52,16 @@ export const servicios = [
   {
     id: 4,
     number: '04',
-    title: 'Desarrollo Web y Aplicaciones Móviles (Pro‑Code)',
+    title: 'Desarrollo Web y E‑commerce para Empresas',
     description:
-      'Desarrollo de soluciones personalizadas cuando se requiere mayor flexibilidad tecnológica, combinando arquitecturas cloud y desarrollo a medida.',
+      'Diseño y desarrollo de sitios web corporativos y plataformas de e‑commerce para empresas, orientados a conversión, seguridad y escalabilidad.',
     icon: 'code',
     color: 'from-indigo-500 to-primary-600',
     borderColor: 'border-indigo-500/20',
     items: [
-      'Aplicaciones web empresariales',
-      'APIs e integraciones',
-      'Aplicaciones móviles',
+      'Sitios web corporativos y landing pages',
+      'Tiendas online (e‑commerce) B2B y B2C',
+      'Integración con pasarelas de pago y ERPs',
       'Arquitecturas cloud escalables',
     ],
   },
