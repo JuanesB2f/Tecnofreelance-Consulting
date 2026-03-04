@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { motion } from 'framer-motion'
-import { Mail, Globe, Shield, CheckCircle2 } from 'lucide-react'
+import { Mail, Globe, Shield, CheckCircle2, MessageCircle } from 'lucide-react'
 
 const Contacto = () => {
   const [formData, setFormData] = useState({ name: '', email: '', message: '' })
@@ -11,16 +11,24 @@ const Contacto = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value })
   }
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault()
     setIsSubmitting(true)
     setSubmitStatus(null)
-    setTimeout(() => {
-      setIsSubmitting(false)
-      setSubmitStatus('success')
-      setFormData({ name: '', email: '', message: '' })
-      setTimeout(() => setSubmitStatus(null), 5000)
-    }, 1500)
+
+    const subject = 'Nuevo mensaje desde el formulario web - Tecnofreelance Consulting'
+    const body = `Nombre: ${formData.name}\nEmail: ${formData.email}\n\nMensaje:\n${formData.message}`
+
+    const mailtoLink = `mailto:tecnofreelanceconsulting@outlook.com?subject=${encodeURIComponent(
+      subject,
+    )}&body=${encodeURIComponent(body)}`
+
+    window.location.href = mailtoLink
+
+    setIsSubmitting(false)
+    setSubmitStatus('success')
+    setFormData({ name: '', email: '', message: '' })
+    setTimeout(() => setSubmitStatus(null), 5000)
   }
 
   const trustPoints = [
@@ -46,49 +54,65 @@ const Contacto = () => {
           </p>
         </motion.div>
 
-        <div className="grid lg:grid-cols-5 gap-8 lg:gap-12">
+        <div className="grid grid-cols-1 lg:grid-cols-5 gap-6 sm:gap-8 lg:gap-12">
           <motion.div
             initial={{ opacity: 0, x: -24 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            className="lg:col-span-2 space-y-5"
+            className="lg:col-span-2 space-y-5 min-w-0"
           >
             <div className="space-y-4">
-              <div className="flex items-start gap-4">
-                <div className="flex-shrink-0 w-12 h-12 rounded-xl bg-primary-100 dark:bg-primary-900/30 flex items-center justify-center">
-                  <Globe className="w-6 h-6 text-primary-600 dark:text-primary-400" />
+              <div className="flex items-start gap-3 sm:gap-4 min-w-0">
+                <div className="flex-shrink-0 w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-primary-100 dark:bg-primary-900/30 flex items-center justify-center">
+                  <Globe className="w-5 h-5 sm:w-6 sm:h-6 text-primary-600 dark:text-primary-400" />
                 </div>
-                <div>
-                  <h4 className="font-semibold text-gray-900 dark:text-white mb-1">Servicios remotos · Global</h4>
-                  <p className="text-gray-600 dark:text-gray-400 text-sm">Atendemos clientes en todo el mundo</p>
+                <div className="min-w-0">
+                  <h4 className="font-semibold text-gray-900 dark:text-white mb-1 text-sm sm:text-base">Servicios remotos · Global</h4>
+                  <p className="text-gray-600 dark:text-gray-400 text-xs sm:text-sm">Atendemos clientes en todo el mundo</p>
                 </div>
               </div>
-              <div className="flex items-start gap-4">
-                <div className="flex-shrink-0 w-12 h-12 rounded-xl bg-primary-100 dark:bg-primary-900/30 flex items-center justify-center">
-                  <Mail className="w-6 h-6 text-primary-600 dark:text-primary-400" />
+              <div className="flex items-start gap-3 sm:gap-4 min-w-0">
+                <div className="flex-shrink-0 w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-primary-100 dark:bg-primary-900/30 flex items-center justify-center">
+                  <Mail className="w-5 h-5 sm:w-6 sm:h-6 text-primary-600 dark:text-primary-400" />
                 </div>
-                <div>
-                  <h4 className="font-semibold text-gray-900 dark:text-white mb-1">Email</h4>
+                <div className="min-w-0">
+                  <h4 className="font-semibold text-gray-900 dark:text-white mb-1 text-sm sm:text-base">Email</h4>
                   <a
-                    href="mailto:contacto@tecnofreelance.com"
-                    className="text-primary-600 dark:text-primary-400 hover:underline text-sm"
+                    href="mailto:tecnofreelanceconsulting@outlook.com"
+                    className="text-primary-600 dark:text-primary-400 hover:underline text-xs sm:text-sm break-anywhere"
                   >
-                    contacto@tecnofreelance.com
+                    tecnofreelanceconsulting@outlook.com
                   </a>
                 </div>
               </div>
-              <div className="flex items-start gap-4">
-                <div className="flex-shrink-0 w-12 h-12 rounded-xl bg-primary-100 dark:bg-primary-900/30 flex items-center justify-center">
-                  <Shield className="w-6 h-6 text-primary-600 dark:text-primary-400" />
+              <div className="flex items-start gap-3 sm:gap-4 min-w-0">
+                <div className="flex-shrink-0 w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-primary-100 dark:bg-primary-900/30 flex items-center justify-center">
+                  <MessageCircle className="w-5 h-5 sm:w-6 sm:h-6 text-primary-600 dark:text-primary-400" />
                 </div>
-                <div>
-                  <h4 className="font-semibold text-gray-900 dark:text-white mb-1">Comunicación segura</h4>
-                  <p className="text-gray-600 dark:text-gray-400 text-sm">Tratamos tu información con confidencialidad</p>
+                <div className="min-w-0">
+                  <h4 className="font-semibold text-gray-900 dark:text-white mb-1 text-sm sm:text-base">WhatsApp</h4>
+                  <a
+                    href="https://wa.me/573148124180"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-primary-600 dark:text-primary-400 hover:underline text-xs sm:text-sm"
+                  >
+                    +57 314 812 4180
+                  </a>
+                </div>
+              </div>
+              <div className="flex items-start gap-3 sm:gap-4 min-w-0">
+                <div className="flex-shrink-0 w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-primary-100 dark:bg-primary-900/30 flex items-center justify-center">
+                  <Shield className="w-5 h-5 sm:w-6 sm:h-6 text-primary-600 dark:text-primary-400" />
+                </div>
+                <div className="min-w-0">
+                  <h4 className="font-semibold text-gray-900 dark:text-white mb-1 text-sm sm:text-base">Comunicación segura</h4>
+                  <p className="text-gray-600 dark:text-gray-400 text-xs sm:text-sm">Tratamos tu información con confidencialidad</p>
                 </div>
               </div>
             </div>
 
-            <div className="bg-white dark:bg-gray-900 p-6 rounded-2xl border border-gray-200 dark:border-gray-800 shadow-card">
+            <div className="bg-white dark:bg-gray-900 p-4 sm:p-6 rounded-2xl border border-gray-200 dark:border-gray-800 shadow-card">
               <h4 className="font-semibold text-gray-900 dark:text-white mb-4">Por qué confiar en nosotros</h4>
               <ul className="space-y-3">
                 {trustPoints.map((point, i) => (
@@ -105,11 +129,11 @@ const Contacto = () => {
             initial={{ opacity: 0, x: 24 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            className="lg:col-span-3"
+            className="lg:col-span-3 min-w-0"
           >
             <form
               onSubmit={handleSubmit}
-              className="bg-white dark:bg-gray-900 p-6 sm:p-8 rounded-2xl border border-gray-200 dark:border-gray-800 shadow-card"
+              className="bg-white dark:bg-gray-900 p-4 sm:p-6 lg:p-8 rounded-2xl border border-gray-200 dark:border-gray-800 shadow-card"
             >
               <div className="space-y-5">
                 <div>
@@ -123,7 +147,8 @@ const Contacto = () => {
                     value={formData.name}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 rounded-xl border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-950 text-gray-900 dark:text-white placeholder-gray-500 focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all"
+                    autoComplete="name"
+                    className="w-full min-w-0 px-4 py-3 rounded-xl border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-950 text-gray-900 dark:text-white placeholder-gray-500 focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all text-base"
                     placeholder="Tu nombre"
                   />
                 </div>
@@ -138,7 +163,8 @@ const Contacto = () => {
                     value={formData.email}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 rounded-xl border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-950 text-gray-900 dark:text-white placeholder-gray-500 focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all"
+                    autoComplete="email"
+                    className="w-full min-w-0 px-4 py-3 rounded-xl border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-950 text-gray-900 dark:text-white placeholder-gray-500 focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all text-base"
                     placeholder="tu@email.com"
                   />
                 </div>
@@ -174,7 +200,7 @@ const Contacto = () => {
                   disabled={isSubmitting}
                   whileHover={{ scale: 1.01 }}
                   whileTap={{ scale: 0.99 }}
-                  className="w-full bg-primary-600 hover:bg-primary-700 text-white font-semibold py-4 rounded-xl transition-colors disabled:opacity-50 disabled:cursor-not-allowed shadow-lg shadow-primary-600/20"
+                  className="w-full min-h-[48px] bg-primary-600 hover:bg-primary-700 text-white font-semibold py-4 rounded-xl transition-colors disabled:opacity-50 disabled:cursor-not-allowed shadow-lg shadow-primary-600/20 touch-manipulation"
                 >
                   {isSubmitting ? 'Enviando...' : 'Enviar mensaje'}
                 </motion.button>

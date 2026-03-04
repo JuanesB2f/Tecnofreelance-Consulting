@@ -1,8 +1,9 @@
-import { useState } from 'react'
+import { useState, lazy, Suspense } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { equipo, competenciasCompartidas } from '../data/equipo'
 import { Check, ArrowRight, Layers, BarChart3, Zap, Bot } from 'lucide-react'
-import MemberModal from './MemberModal'
+
+const MemberModal = lazy(() => import('./MemberModal'))
 
 const iconByRole = {
   'CoE & Gobierno Power Platform': Layers,
@@ -61,13 +62,13 @@ const Equipo = () => {
             <h3 className="text-base font-bold text-gray-900 dark:text-white mb-4">
               Competencias compartidas del equipo
             </h3>
-            <ul className="flex flex-wrap gap-3">
+            <ul className="flex flex-wrap gap-2 sm:gap-3">
               {competenciasCompartidas.map((item, i) => (
                 <li
                   key={i}
-                  className="inline-flex items-center gap-2 bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-lg px-4 py-2.5 text-sm font-medium text-gray-700 dark:text-gray-300"
+                  className="inline-flex items-center gap-2 bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-lg px-3 py-2 sm:px-4 sm:py-2.5 text-xs sm:text-sm font-medium text-gray-700 dark:text-gray-300"
                 >
-                  <Check className="w-4 h-4 text-primary-500 flex-shrink-0" />
+                  <Check className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-primary-500 flex-shrink-0" />
                   {item}
                 </li>
               ))}
@@ -90,13 +91,13 @@ const Equipo = () => {
                   variants={card}
                   whileHover={{ y: -6 }}
                   onClick={() => setSelectedArea(area)}
-                  className="group relative bg-gray-50 dark:bg-gray-900 rounded-2xl border border-gray-200 dark:border-gray-800 overflow-hidden shadow-card hover:shadow-card-hover transition-all duration-300 cursor-pointer"
+                  className="group relative bg-gray-50 dark:bg-gray-900 rounded-2xl border border-gray-200 dark:border-gray-800 overflow-hidden shadow-card hover:shadow-card-hover transition-all duration-300 cursor-pointer min-w-0 touch-manipulation"
                 >
-                  <div className="h-52 sm:h-56 bg-gradient-to-br from-primary-500/10 to-primary-600/10 dark:from-primary-500/20 dark:to-primary-600/20 flex items-center justify-center">
-                    <Icon className="w-16 h-16 text-primary-500 dark:text-primary-400 opacity-80 group-hover:scale-110 transition-transform duration-300" />
+                  <div className="h-44 sm:h-52 md:h-56 bg-gradient-to-br from-primary-500/10 to-primary-600/10 dark:from-primary-500/20 dark:to-primary-600/20 flex items-center justify-center">
+                    <Icon className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 text-primary-500 dark:text-primary-400 opacity-80 group-hover:scale-110 transition-transform duration-300" />
                   </div>
-                  <div className="p-6 lg:p-8">
-                    <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2 tracking-tight">
+                  <div className="p-4 sm:p-6 lg:p-8">
+                    <h3 className="text-lg sm:text-xl font-bold text-gray-900 dark:text-white mb-2 tracking-tight break-words">
                       {area.role}
                     </h3>
                     <p className="text-primary-600 dark:text-primary-400 font-semibold text-sm mb-3">
@@ -119,10 +120,18 @@ const Equipo = () => {
 
       <AnimatePresence>
         {selectedArea && (
-          <MemberModal
-            member={selectedArea}
-            onClose={() => setSelectedArea(null)}
-          />
+          <Suspense
+            fallback={
+              <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm" aria-hidden>
+                <div className="h-8 w-8 animate-spin rounded-full border-2 border-primary-400 border-t-transparent" />
+              </div>
+            }
+          >
+            <MemberModal
+              member={selectedArea}
+              onClose={() => setSelectedArea(null)}
+            />
+          </Suspense>
         )}
       </AnimatePresence>
     </>

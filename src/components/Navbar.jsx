@@ -6,8 +6,18 @@ const Navbar = ({ theme, onToggleTheme }) => {
   const [isScrolled, setIsScrolled] = useState(false)
 
   useEffect(() => {
-    const handleScroll = () => setIsScrolled(window.scrollY > 40)
-    window.addEventListener('scroll', handleScroll)
+    let ticking = false
+    const handleScroll = () => {
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          setIsScrolled(window.scrollY > 40)
+          ticking = false
+        })
+        ticking = true
+      }
+    }
+    window.addEventListener('scroll', handleScroll, { passive: true })
+    handleScroll()
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
@@ -58,14 +68,14 @@ const Navbar = ({ theme, onToggleTheme }) => {
               </span>
             </motion.button>
 
-            <div className="flex items-center gap-8">
-              <button onClick={() => scrollToSection('servicios')} className={navLinkClass(isScrolled)}>
+            <div className="flex items-center gap-4 xl:gap-8">
+              <button onClick={() => scrollToSection('servicios')} className={`min-h-[44px] min-w-[44px] flex items-center justify-center ${navLinkClass(isScrolled)}`}>
                 Soluciones digitales
               </button>
-              <button onClick={() => scrollToSection('equipo')} className={navLinkClass(isScrolled)}>
+              <button onClick={() => scrollToSection('equipo')} className={`min-h-[44px] min-w-[44px] flex items-center justify-center ${navLinkClass(isScrolled)}`}>
                 Sobre nosotros
               </button>
-              <button onClick={() => scrollToSection('contacto')} className={navLinkClass(isScrolled)}>
+              <button onClick={() => scrollToSection('contacto')} className={`min-h-[44px] min-w-[44px] flex items-center justify-center ${navLinkClass(isScrolled)}`}>
                 Contáctanos
               </button>
               <motion.button
@@ -99,29 +109,29 @@ const Navbar = ({ theme, onToggleTheme }) => {
         initial={{ y: 100 }}
         animate={{ y: 0 }}
         transition={{ duration: 0.35 }}
-        className="fixed bottom-0 left-0 right-0 z-50 md:hidden bg-white/95 dark:bg-gray-950/95 backdrop-blur-xl border-t border-gray-200 dark:border-gray-800 shadow-[0_-4px_24px_rgba(0,0,0,0.06)] dark:shadow-[0_-4px_24px_rgba(0,0,0,0.3)]"
+        className="fixed bottom-0 left-0 right-0 z-50 md:hidden bg-white/95 dark:bg-gray-950/95 backdrop-blur-xl border-t border-gray-200 dark:border-gray-800 shadow-[0_-4px_24px_rgba(0,0,0,0.06)] dark:shadow-[0_-4px_24px_rgba(0,0,0,0.3)] safe-area-bottom"
       >
-        <div className="max-w-xl mx-auto flex items-center justify-around h-16 px-2">
-          <button onClick={scrollToTop} className="flex flex-col items-center gap-0.5 py-2 text-xs font-medium text-gray-500 dark:text-gray-400 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">
-            <Home className="w-5 h-5" /> Inicio
+        <div className="max-w-xl mx-auto flex items-center justify-around min-h-[64px] h-16 px-2 py-2">
+          <button onClick={scrollToTop} className="flex flex-col items-center justify-center gap-0.5 min-h-[44px] min-w-[44px] py-2 text-xs font-medium text-gray-500 dark:text-gray-400 hover:text-primary-600 dark:hover:text-primary-400 transition-colors touch-manipulation">
+            <Home className="w-5 h-5 shrink-0" /> Inicio
           </button>
-          <button onClick={() => scrollToSection('servicios')} className="flex flex-col items-center gap-0.5 py-2 text-xs font-medium text-gray-500 dark:text-gray-400 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">
-            <LayoutGrid className="w-5 h-5" /> Soluciones
+          <button onClick={() => scrollToSection('servicios')} className="flex flex-col items-center justify-center gap-0.5 min-h-[44px] min-w-[44px] py-2 text-xs font-medium text-gray-500 dark:text-gray-400 hover:text-primary-600 dark:hover:text-primary-400 transition-colors touch-manipulation">
+            <LayoutGrid className="w-5 h-5 shrink-0" /> Soluciones
           </button>
-          <button onClick={() => scrollToSection('equipo')} className="flex flex-col items-center gap-0.5 py-2 text-xs font-medium text-gray-500 dark:text-gray-400 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">
-            <Users className="w-5 h-5" /> Nosotros
+          <button onClick={() => scrollToSection('equipo')} className="flex flex-col items-center justify-center gap-0.5 min-h-[44px] min-w-[44px] py-2 text-xs font-medium text-gray-500 dark:text-gray-400 hover:text-primary-600 dark:hover:text-primary-400 transition-colors touch-manipulation">
+            <Users className="w-5 h-5 shrink-0" /> Nosotros
           </button>
-          <button onClick={() => scrollToSection('contacto')} className="flex flex-col items-center gap-0.5 py-2 text-xs font-medium text-primary-600 dark:text-primary-400">
-            <Mail className="w-5 h-5" /> Contacto
+          <button onClick={() => scrollToSection('contacto')} className="flex flex-col items-center justify-center gap-0.5 min-h-[44px] min-w-[44px] py-2 text-xs font-medium text-primary-600 dark:text-primary-400 touch-manipulation">
+            <Mail className="w-5 h-5 shrink-0" /> Contacto
           </button>
           <motion.button
             whileTap={{ scale: 0.9 }}
             onClick={(e) => { e.preventDefault(); onToggleTheme?.() }}
             type="button"
-            className="flex flex-col items-center gap-0.5 py-2 text-xs font-medium text-gray-500 dark:text-gray-400"
+            className="flex flex-col items-center justify-center gap-0.5 min-h-[44px] min-w-[44px] py-2 text-xs font-medium text-gray-500 dark:text-gray-400 touch-manipulation"
             aria-label="Cambiar tema"
           >
-            {theme === 'dark' ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />} Tema
+            {theme === 'dark' ? <Sun className="w-5 h-5 shrink-0" /> : <Moon className="w-5 h-5 shrink-0" />} Tema
           </motion.button>
         </div>
       </motion.nav>

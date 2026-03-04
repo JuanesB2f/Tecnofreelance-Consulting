@@ -28,28 +28,30 @@ const MemberModal = ({ member, onClose }) => {
           animate={{ scale: 1, opacity: 1 }}
           exit={{ scale: 0.95, opacity: 0 }}
           onClick={(e) => e.stopPropagation()}
-          className="bg-white dark:bg-gray-900 rounded-2xl shadow-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto border border-gray-200 dark:border-gray-800"
+          className="bg-white dark:bg-gray-900 rounded-2xl shadow-2xl max-w-4xl w-full max-h-[85dvh] sm:max-h-[90vh] overflow-y-auto overflow-x-hidden border border-gray-200 dark:border-gray-800 mx-2 sm:mx-4"
         >
           <button
+            type="button"
             onClick={onClose}
-            className="absolute top-4 right-4 z-10 p-2.5 rounded-xl bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
+            className="absolute top-3 right-3 sm:top-4 sm:right-4 z-10 min-h-[44px] min-w-[44px] flex items-center justify-center p-2.5 rounded-xl bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors touch-manipulation"
             aria-label="Cerrar"
           >
             <X className="w-5 h-5" />
           </button>
 
-          <div className="p-6 lg:p-8">
+          <div className="p-4 sm:p-6 lg:p-8 pt-14 sm:pt-16">
             {/* Header: área (sin nombre de persona) */}
             <div className="mb-8">
-              <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white mb-2">
+              <h2 className="text-xl sm:text-2xl lg:text-3xl font-bold text-gray-900 dark:text-white mb-2 break-words pr-10">
                 {member.role}
               </h2>
               <p className="text-lg text-primary-600 dark:text-primary-400 font-semibold mb-4">
                 {member.title}
               </p>
               <button
+                type="button"
                 onClick={scrollToContact}
-                className="inline-flex items-center gap-2 bg-primary-600 text-white px-6 py-3 rounded-xl font-medium hover:bg-primary-700 transition-colors"
+                className="inline-flex items-center gap-2 bg-primary-600 text-white px-5 py-3 rounded-xl font-medium hover:bg-primary-700 transition-colors min-h-[44px] touch-manipulation"
               >
                 <Mail className="w-5 h-5" />
                 Contáctanos
@@ -112,11 +114,13 @@ const MemberModal = ({ member, onClose }) => {
               >
                 {member.portfolio.map((image, index) => (
                   <SwiperSlide key={index}>
-                    <div className="relative h-56 sm:h-64 lg:h-72 rounded-xl overflow-hidden bg-gray-200 dark:bg-gray-800">
+                    <div className="relative h-48 sm:h-56 md:h-64 lg:h-72 rounded-xl overflow-hidden bg-gray-200 dark:bg-gray-800">
                       <img
                         src={image}
                         alt={`Portafolio ${index + 1}`}
                         className="w-full h-full object-cover"
+                        loading="lazy"
+                        decoding="async"
                       />
                     </div>
                   </SwiperSlide>
@@ -129,11 +133,11 @@ const MemberModal = ({ member, onClose }) => {
                 ¿Interesado en esta área?
               </p>
               <a
-                href="mailto:contacto@tecnofreelance.com"
+                href="mailto:tecnofreelanceconsulting@outlook.com"
                 className="inline-flex items-center gap-2 text-primary-600 dark:text-primary-400 hover:underline text-sm font-medium"
               >
                 <Mail className="w-5 h-5" />
-                contacto@tecnofreelance.com
+                tecnofreelanceconsulting@outlook.com
               </a>
             </div>
           </div>

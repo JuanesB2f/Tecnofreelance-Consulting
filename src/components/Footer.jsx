@@ -7,12 +7,12 @@ const Footer = () => {
   const scrollToTop = () => window.scrollTo({ top: 0, behavior: 'smooth' })
 
   return (
-    <footer className="bg-gray-900 dark:bg-gray-950 text-white py-12 lg:py-16 border-t border-gray-800">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-10 mb-10 lg:mb-12">
-          <div className="lg:col-span-2">
-            <h3 className="text-xl font-bold tracking-tight mb-3">Tecnofreelance Consulting</h3>
-            <p className="text-gray-400 max-w-md leading-relaxed text-sm mb-3">
+    <footer className="bg-gray-900 dark:bg-gray-950 text-white py-10 sm:py-12 lg:py-16 border-t border-gray-800">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl overflow-hidden">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 lg:gap-10 mb-8 sm:mb-10 lg:mb-12">
+          <div className="lg:col-span-2 min-w-0">
+            <h3 className="text-lg sm:text-xl font-bold tracking-tight mb-3">Tecnofreelance Consulting</h3>
+            <p className="text-gray-400 max-w-md leading-relaxed text-xs sm:text-sm mb-3">
               Soluciones digitales escalables mediante Power Platform, Power BI, desarrollo pro code y agentes de inteligencia artificial con Copilot.
             </p>
             <p className="text-gray-500 text-xs mb-4">
@@ -32,18 +32,18 @@ const Footer = () => {
             <h4 className="text-sm font-semibold text-gray-300 uppercase tracking-wider mb-3">Navegación</h4>
             <ul className="space-y-2.5">
               <li>
-                <button onClick={() => scrollTo('servicios')} className="flex items-center gap-2 text-gray-400 hover:text-white transition-colors text-sm">
-                  <LayoutGrid className="w-4 h-4" /> Soluciones digitales
+                <button type="button" onClick={() => scrollTo('servicios')} className="flex items-center gap-2 text-gray-400 hover:text-white transition-colors text-xs sm:text-sm min-h-[44px] touch-manipulation py-1">
+                  <LayoutGrid className="w-4 h-4 shrink-0" /> Soluciones digitales
                 </button>
               </li>
               <li>
-                <button onClick={() => scrollTo('equipo')} className="flex items-center gap-2 text-gray-400 hover:text-white transition-colors text-sm">
-                  <Users className="w-4 h-4" /> Sobre nosotros
+                <button type="button" onClick={() => scrollTo('equipo')} className="flex items-center gap-2 text-gray-400 hover:text-white transition-colors text-xs sm:text-sm min-h-[44px] touch-manipulation py-1">
+                  <Users className="w-4 h-4 shrink-0" /> Sobre nosotros
                 </button>
               </li>
               <li>
-                <button onClick={() => scrollTo('contacto')} className="flex items-center gap-2 text-gray-400 hover:text-white transition-colors text-sm">
-                  <MessageCircle className="w-4 h-4" /> Contáctanos
+                <button type="button" onClick={() => scrollTo('contacto')} className="flex items-center gap-2 text-gray-400 hover:text-white transition-colors text-xs sm:text-sm min-h-[44px] touch-manipulation py-1">
+                  <MessageCircle className="w-4 h-4 shrink-0" /> Contáctanos
                 </button>
               </li>
             </ul>
@@ -52,9 +52,9 @@ const Footer = () => {
           <div>
             <h4 className="text-sm font-semibold text-gray-300 uppercase tracking-wider mb-3">Contacto</h4>
             <ul className="space-y-2.5 text-sm">
-              <li>
-                <a href="mailto:contacto@tecnofreelance.com" className="flex items-center gap-2 text-gray-400 hover:text-white transition-colors">
-                  <Mail className="w-4 h-4" /> contacto@tecnofreelance.com
+              <li className="min-w-0">
+                <a href="mailto:tecnofreelanceconsulting@outlook.com" className="flex items-center gap-2 text-gray-400 hover:text-white transition-colors break-anywhere text-xs sm:text-sm">
+                  <Mail className="w-4 h-4 shrink-0" /> tecnofreelanceconsulting@outlook.com
                 </a>
               </li>
               <li className="text-gray-500">Servicios remotos · Global</li>
@@ -67,12 +67,13 @@ const Footer = () => {
             © {new Date().getFullYear()} Tecnofreelance Consulting. Todos los derechos reservados.
           </p>
           <motion.button
+            type="button"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             onClick={scrollToTop}
-            className="inline-flex items-center gap-2 text-gray-400 hover:text-white text-sm font-medium transition-colors"
+            className="inline-flex items-center gap-2 text-gray-400 hover:text-white text-xs sm:text-sm font-medium transition-colors min-h-[44px] px-2 touch-manipulation"
           >
-            <ArrowUp className="w-4 h-4" /> Volver arriba
+            <ArrowUp className="w-4 h-4 shrink-0" /> Volver arriba
           </motion.button>
         </div>
       </div>

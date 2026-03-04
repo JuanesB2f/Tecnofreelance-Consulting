@@ -8,7 +8,7 @@ const Hero = () => {
   const scrollTo = (id) => document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' })
 
   return (
-    <section className="relative min-h-screen flex flex-col overflow-hidden bg-gradient-to-br from-slate-950 via-blue-950 to-indigo-950 dark:from-slate-950 dark:via-blue-950 dark:to-indigo-950">
+    <section className="relative min-h-screen-dvh flex flex-col overflow-hidden bg-gradient-to-br from-slate-950 via-blue-950 to-indigo-950 dark:from-slate-950 dark:via-blue-950 dark:to-indigo-950">
       {/* Fondo: atmósfera que integra con la imagen (estrellas y circuito sutil) */}
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_50%_at_50%_20%,rgba(59,130,246,0.08),transparent_50%)]" />
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_60%_80%_at_80%_60%,rgba(99,102,241,0.06),transparent_50%)]" />
@@ -116,6 +116,10 @@ const Hero = () => {
                     src={HERO_IMAGE_URL}
                     alt="Tecnofreelance Consulting - Soluciones digitales, Power Platform, datos y tecnología"
                     className="w-full h-auto object-cover object-center aspect-[4/3] max-h-[420px] block"
+                    fetchPriority="high"
+                    width={520}
+                    height={390}
+                    decoding="async"
                   />
                   {/* Desvanecido en ambos bordes (izquierdo y derecho) y suave arriba/abajo */}
                   <div
